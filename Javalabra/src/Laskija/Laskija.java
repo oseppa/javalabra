@@ -11,7 +11,7 @@ public class Laskija {
     if(luku == 0)
             this.luku = 0;
     else
-        this.luku = (int) (Math.random()*luku) + 1;
+        this.luku = (int) (Math.random()*luku);
     return luku;
     }
 }
