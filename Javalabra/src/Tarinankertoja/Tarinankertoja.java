@@ -1,8 +1,7 @@
 package Tarinankertoja;
 
 public class Tarinankertoja {
-    
-    public Tarinankertoja(){
-        
-    }    
+
+    public Tarinankertoja() {
+    }
 }
