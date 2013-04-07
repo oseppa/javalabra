@@ -1,4 +1,4 @@
-package Laskija;
+package Main;
 
 public class Laskija {
 

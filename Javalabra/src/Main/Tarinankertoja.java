@@ -1,4 +1,4 @@
-package Tarinankertoja;
+package Main;
 
 public class Tarinankertoja {
 
