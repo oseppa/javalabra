@@ -12,7 +12,7 @@ public class Lukija {
     private static File eka = new File("Eka.txt");
     private static File toka = new File("Toka.txt");
     private static File kolmas = new File("Kolmas.txt");
-    String[] Taulu;
+    private String[] Taulu;
 
     public String lueKappale(File tiedosto, int kappale) {
         this.tiedosto = tiedosto;
