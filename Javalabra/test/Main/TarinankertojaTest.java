@@ -25,7 +25,7 @@ public class TarinankertojaTest {
     public void arvoKappaleToimiiYkkosella() {
         int a = testikertoja.arvoKappale(1);
 
-        int vastaus = 1;
+        int vastaus = 0;
 
         assertEquals(a, vastaus);
     }

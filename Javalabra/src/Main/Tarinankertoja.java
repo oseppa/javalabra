@@ -18,12 +18,8 @@ public class Tarinankertoja extends Lukija {
     }
 
     public int arvoKappale(int luku) {
-        if (luku == 1) {
-            this.luku = 1;
-        } else {
         this.luku = luku;
         luku = (int) (Math.random() * luku);
-        }
         return luku;
     }
 
