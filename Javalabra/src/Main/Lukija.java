@@ -9,10 +9,10 @@ public class Lukija {
     private int kappale;
     private File tiedosto;
     public static Scanner lukija;
-    private static File eka = new File("Eka.txt");
-    private static File toka = new File("Toka.txt");
-    private static File kolmas = new File("Kolmas.txt");
-    private String[] Taulu;
+    public static File eka = new File("Eka.txt");
+    public static File toka = new File("Toka.txt");
+    public static File kolmas = new File("Kolmas.txt");
+    public String[] Taulu;
 
     public String lueKappale(File tiedosto, int kappale) {
         this.tiedosto = tiedosto;
@@ -39,5 +39,15 @@ public class Lukija {
         lukumaara = Taulu.length;
         lukija.close();
         return lukumaara;
+    }
+    
+    public static void main(String[] args){
+        Lukija lukija = new Lukija();
+        int a = lukija.laskeKappale(eka);
+        File ekaTesti = new File("Testi1.txt");
+        System.out.println(a);
+        String b = lukija.lueKappale(eka, 1);
+        System.out.println(b);
+        String c = lukija.lueKappale(ekaTesti, 0);
     }
 }
