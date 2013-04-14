@@ -3,6 +3,11 @@ package Main;
 import java.io.File;
 import java.util.Scanner;
 
+/**
+ * Luokka, jolla käsitellään tiedostoja
+ *
+ * @author Olli
+ */
 public class Lukija {
 
     private int lukumaara;
@@ -14,6 +19,19 @@ public class Lukija {
     public static File kolmas = new File("Kolmas.txt");
     public String[] Taulu;
 
+    /**
+     * Luokan konstruktori
+     */
+    public Lukija() {
+    }
+
+    /**
+     * Metodi lukee osia tiedostoista
+     *
+     * @param tiedosto tiedosto, josta metodi lukee tekstiä
+     * @param kappale osa, jonka teksti lukee
+     * @return palauttaa tekstin pätkän
+     */
     public String lueKappale(File tiedosto, int kappale) {
         this.tiedosto = tiedosto;
         this.kappale = kappale;
@@ -22,12 +40,21 @@ public class Lukija {
         } catch (Exception e) {
             System.out.println("Tiedostoa ei löytynyt " + e.getMessage());
         }
+        if (!lukija.hasNextLine()) {
+            return "Tiedosto " + tiedosto + " on tyhjä.";
+        }
         Taulu = lukija.nextLine().split(":");
         String EkaKappale = Taulu[kappale];
         lukija.close();
         return EkaKappale;
     }
 
+    /**
+     * Metodi laskaa, kuinka monta kappaletta tiedostossa on
+     *
+     * @param tiedosto tiedosto, josta metodi laskee kappaleita
+     * @return kappaleiden lukumäärä
+     */
     public int laskeKappale(File tiedosto) {
         this.tiedosto = tiedosto;
         try {
@@ -39,15 +66,5 @@ public class Lukija {
         lukumaara = Taulu.length;
         lukija.close();
         return lukumaara;
-    }
-    
-    public static void main(String[] args){
-        Lukija lukija = new Lukija();
-        int a = lukija.laskeKappale(eka);
-        File ekaTesti = new File("Testi1.txt");
-        System.out.println(a);
-        String b = lukija.lueKappale(eka, 1);
-        System.out.println(b);
-        String c = lukija.lueKappale(ekaTesti, 0);
     }
 }

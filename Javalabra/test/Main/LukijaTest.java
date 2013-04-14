@@ -48,4 +48,10 @@ public class LukijaTest {
 
         assertEquals(a, "Testi2-2");
     }
+    @Test
+    public void lueKappaleLukeeTyhjanOikein(){
+        String a = testi.lueKappale(kolmasTesti, 0);
+        
+        assertEquals(a, "Tiedosto Testi3.txt on tyhjä.");
+    }
 }
