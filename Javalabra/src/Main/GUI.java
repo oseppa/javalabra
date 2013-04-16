@@ -12,30 +12,35 @@ import java.awt.event.*;
 public class GUI extends JFrame {
 
     private Tarinankertoja kertoja;
-    private JTextField teksti;
+    private JTextArea teksti;
     private JButton etene;
+    private JScrollPane rullaus;
 
     public GUI() {
 
         kertoja = new Tarinankertoja();
 
-        teksti = new JTextField();
+        teksti = new JTextArea();
         teksti.setEditable(false);
         teksti.setText(kertoja.kerroTarina());
+        teksti.setLineWrap(true);
+
+        rullaus = new JScrollPane(teksti);
+        rullaus.setPreferredSize(new Dimension(320,180));
+        rullaus.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
         etene = new JButton("Seuraava");
 
         etene.addActionListener(
                 new ActionListener() {
             public void actionPerformed(ActionEvent tapahtuma) {
-                teksti.setText(kertoja.kerroTarina());
+                teksti.setText(teksti.getText() + "\n\n" + kertoja.kerroTarina());
             }
         });
-        setLayout(new GridLayout(2, 1));
+        setLayout(new BorderLayout());
 
-        add(teksti);
-        add(etene);
-
+        add(rullaus, BorderLayout.CENTER);
+        add(etene, BorderLayout.SOUTH);
     }
 
     public static void main(String args[]) {
