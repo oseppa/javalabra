@@ -54,7 +54,7 @@ public class Tarinankertoja extends Lukija {
             return lueKappale(toka, tarina);
         } else {
             tarina = arvoKappale(kolmannenPituus);
-            monesko++;
+            monesko = 0;
             return lueKappale(kolmas, tarina);
         }
     }
