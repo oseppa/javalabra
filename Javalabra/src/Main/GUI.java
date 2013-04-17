@@ -54,7 +54,7 @@ public class GUI extends JFrame {
         add(etene, BorderLayout.SOUTH);
     }
 
-    public static void main(String args[]) {
+    public void aloita() {
         GUI ikkuna = new GUI();
         ikkuna.setTitle("GUI");
         ikkuna.pack();
