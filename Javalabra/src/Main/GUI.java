@@ -15,18 +15,20 @@ public class GUI extends JFrame {
     private JTextArea teksti;
     private JButton etene;
     private JScrollPane rullaus;
+    private int laskuri;
 
     public GUI() {
 
         kertoja = new Tarinankertoja();
 
+        laskuri = 0;
+
         teksti = new JTextArea();
         teksti.setEditable(false);
-        teksti.setText(kertoja.kerroTarina());
         teksti.setLineWrap(true);
 
         rullaus = new JScrollPane(teksti);
-        rullaus.setPreferredSize(new Dimension(320,180));
+        rullaus.setPreferredSize(new Dimension(640, 320));
         rullaus.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 
         etene = new JButton("Seuraava");
@@ -34,7 +36,12 @@ public class GUI extends JFrame {
         etene.addActionListener(
                 new ActionListener() {
             public void actionPerformed(ActionEvent tapahtuma) {
-                teksti.setText(teksti.getText() + "\n\n" + kertoja.kerroTarina());
+                if (laskuri == 0) {
+                    teksti.setText(kertoja.kerroTarina());
+                    laskuri++;
+                } else {
+                    teksti.setText(teksti.getText() + "\n\n" + kertoja.kerroTarina());
+                }
             }
         });
         setLayout(new BorderLayout());
