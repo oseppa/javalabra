@@ -39,8 +39,12 @@ public class GUI extends JFrame {
                 if (laskuri == 0) {
                     teksti.setText(kertoja.kerroTarina());
                     laskuri++;
-                } else {
+                } else if (laskuri < 3) {
                     teksti.setText(teksti.getText() + "\n\n" + kertoja.kerroTarina());
+                    laskuri++;
+                } else {
+                    teksti.setText(kertoja.kerroTarina());
+                    laskuri = 1;
                 }
             }
         });
