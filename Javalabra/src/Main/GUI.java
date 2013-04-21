@@ -53,12 +53,12 @@ public class GUI extends JFrame {
 
         nollaus = new JButton("Uudestaan!");
 
-        nollaus.addActionListener( // aloitetaan puhtaalta pöydältä uudella laskurilla
+        nollaus.addActionListener(
                 new ActionListener() {
             public void actionPerformed(ActionEvent tapahtuma) {
+                kertoja = new Tarinankertoja();
                 laskuri = 0;
-                teksti.setText(kertoja.kerroTarina());
-                laskuri++;
+                teksti.setText(null);
             }
         });
 
@@ -67,8 +67,8 @@ public class GUI extends JFrame {
         nappulat.add(nollaus);
 
         this.setLayout(new BorderLayout());
-        this.add("South", nappulat);
-        this.add("North", rullaus);
+        this.add("North",rullaus);
+        this.add("South",nappulat);
     }
 
     /**
