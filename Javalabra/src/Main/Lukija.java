@@ -45,6 +45,7 @@ public class Lukija {
         }
         Taulu = lukija.nextLine().split(":");
         String EkaKappale = Taulu[kappale];
+
         lukija.close();
         return EkaKappale;
     }
@@ -61,6 +62,9 @@ public class Lukija {
             lukija = new Scanner(tiedosto);
         } catch (Exception e) {
             System.out.println("Tiedostoa ei löytynyt " + e.getMessage());
+        }
+        if (!lukija.hasNextLine()) {
+            return -1;
         }
         Taulu = lukija.nextLine().split(":");
         lukumaara = Taulu.length;

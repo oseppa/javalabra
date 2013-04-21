@@ -36,6 +36,15 @@ public class LukijaTest {
     }
 
     @Test
+    public void laskeKappaleLaskeeTyhjanOikein(){
+        int a = testi.laskeKappale(kolmasTesti);
+        
+        int vastaus = -1;
+        
+        assertEquals(a, vastaus);
+    }
+    
+    @Test
     public void lueKappaleLukeeEkanOikein() {
         String a = testi.lueKappale(ekaTesti, 0);
 

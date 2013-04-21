@@ -1,22 +1,26 @@
 package Main;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
 /**
  * Ohjelman käyttöliittymä
  *
  * @author Olli
  */
-import javax.swing.*;
-import java.awt.*;
-import java.awt.event.*;
-
 public class GUI extends JFrame {
 
     private Tarinankertoja kertoja;
     private JTextArea teksti;
     private JButton etene;
+    private JButton nollaus;
     private JScrollPane rullaus;
     private int laskuri;
 
+    /**
+     * Käyttöliittymän konstruktori
+     */
     public GUI() {
 
         kertoja = new Tarinankertoja();
@@ -43,17 +47,33 @@ public class GUI extends JFrame {
                     teksti.setText(teksti.getText() + "\n\n" + kertoja.kerroTarina());
                     laskuri++;
                 } else {
-                    teksti.setText(kertoja.kerroTarina());
-                    laskuri = 1;
                 }
             }
         });
-        setLayout(new BorderLayout());
 
-        add(rullaus, BorderLayout.CENTER);
-        add(etene, BorderLayout.SOUTH);
+        nollaus = new JButton("Uudestaan!");
+
+        nollaus.addActionListener( // aloitetaan puhtaalta pöydältä uudella laskurilla
+                new ActionListener() {
+            public void actionPerformed(ActionEvent tapahtuma) {
+                laskuri = 0;
+                teksti.setText(kertoja.kerroTarina());
+                laskuri++;
+            }
+        });
+
+        JPanel nappulat = new JPanel(new GridLayout(2, 1));
+        nappulat.add(etene);
+        nappulat.add(nollaus);
+
+        this.setLayout(new BorderLayout());
+        this.add("South", nappulat);
+        this.add("North", rullaus);
     }
 
+    /**
+     * Metodi, jolla GUI:n voi käynnistää
+     */
     public void aloita() {
         GUI ikkuna = new GUI();
         ikkuna.setTitle("GUI");
