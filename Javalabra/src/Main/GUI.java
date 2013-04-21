@@ -67,8 +67,8 @@ public class GUI extends JFrame {
         nappulat.add(nollaus);
 
         this.setLayout(new BorderLayout());
-        this.add("North",rullaus);
-        this.add("South",nappulat);
+        this.add("North", rullaus);
+        this.add("South", nappulat);
     }
 
     /**
