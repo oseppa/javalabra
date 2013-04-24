@@ -15,14 +15,11 @@ public class Tarinankertoja extends Lukija {
     private static int kolmannenPituus;
 
     /**
-     * Konstruktori, jossa alustetaan uusi Lukija-olio, lasketaan valmiiksi
-     * kappaleiden pituudet ja alustetaan tarina alkutilaan
+     * Konstruktori, jossa alustetaan uusi Lukija-olio
+     * ja alustetaan tarina alkutilaan
      */
     public Tarinankertoja() {
         Lukija lukija = new Lukija();
-        ekanPituus = laskeKappale(eka);
-        tokanPituus = laskeKappale(toka);
-        kolmannenPituus = laskeKappale(kolmas);
         monesko = 0;
     }
 
@@ -45,14 +42,17 @@ public class Tarinankertoja extends Lukija {
      */
     public String kerroTarina() {
         if (monesko == 0) {
+            ekanPituus = laskeKappale(eka);
             tarina = arvoKappale(ekanPituus);
             monesko++;
             return lueKappale(eka, tarina);
         } else if (monesko == 1) {
+            tokanPituus = laskeKappale(toka);
             tarina = arvoKappale(tokanPituus);
             monesko++;
             return lueKappale(toka, tarina);
         } else {
+            kolmannenPituus = laskeKappale(kolmas);
             tarina = arvoKappale(kolmannenPituus);
             monesko = 0;
             return lueKappale(kolmas, tarina);

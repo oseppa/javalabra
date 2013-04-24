@@ -1,6 +1,6 @@
 package Main;
 
-import java.io.File;
+import java.io.*;
 import java.util.Scanner;
 
 /**
@@ -37,8 +37,8 @@ public class Lukija {
         this.kappale = kappale;
         try {
             lukija = new Scanner(tiedosto);
-        } catch (Exception e) {
-            System.out.println("Tiedostoa ei löytynyt " + e.getMessage());
+        } catch (FileNotFoundException e) {
+            System.out.println("Tiedostoa " +tiedosto +" ei löytynyt");
         }
         if (!lukija.hasNextLine()) {
             return "Tiedosto " + tiedosto + " on tyhjä.";
@@ -51,7 +51,7 @@ public class Lukija {
     }
 
     /**
-     * Metodi laskaa, kuinka monta kappaletta tiedostossa on
+     * Metodi laskee, kuinka monta kappaletta tiedostossa on
      *
      * @param tiedosto tiedosto, josta metodi laskee kappaleita
      * @return kappaleiden lukumäärä
@@ -60,8 +60,8 @@ public class Lukija {
         this.tiedosto = tiedosto;
         try {
             lukija = new Scanner(tiedosto);
-        } catch (Exception e) {
-            System.out.println("Tiedostoa ei löytynyt " + e.getMessage());
+        } catch (FileNotFoundException e) {
+            System.out.println("Tiedostoa " +tiedosto +" ei löytynyt");
         }
         if (!lukija.hasNextLine()) {
             return -1;
