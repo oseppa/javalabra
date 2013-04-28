@@ -7,16 +7,28 @@ package Main;
  */
 public class Tarinankertoja extends Lukija {
 
+    /**
+     * Arvo jota käytetään arvoKappale()-metodin maksimina
+     *
+     * @see Main.Tarinankertoja#arvoKappale(int)
+     */
     private int luku;
+    /**
+     * Arvo, jota käytetään kerroTarina()-metodin kappaleen valinnassa
+     *
+     * @see Main.Tarinankertoja#kerroTarina()
+     */
     private int tarina;
+    /**
+     * Arvo, joka pitää kirjaa siitä, kuinka pitkällä tarinassa ollaan
+     *
+     * @see Main.Tarinankertoja#kerroTarina()
+     */
     private int monesko;
-    private static int ekanPituus;
-    private static int tokanPituus;
-    private static int kolmannenPituus;
 
     /**
-     * Konstruktori, jossa alustetaan uusi Lukija-olio
-     * ja alustetaan tarina alkutilaan
+     * Konstruktori, jossa alustetaan uusi Lukija-olio ja alustetaan tarina
+     * alkutilaan
      */
     public Tarinankertoja() {
         Lukija lukija = new Lukija();
@@ -42,20 +54,20 @@ public class Tarinankertoja extends Lukija {
      */
     public String kerroTarina() {
         if (monesko == 0) {
-            ekanPituus = laskeKappale(eka);
-            tarina = arvoKappale(ekanPituus);
+            tarina = arvoKappale(laskeKappale(eka));
             monesko++;
             return lueKappale(eka, tarina);
         } else if (monesko == 1) {
-            tokanPituus = laskeKappale(toka);
-            tarina = arvoKappale(tokanPituus);
+            tarina = arvoKappale(laskeKappale(toka));
             monesko++;
             return lueKappale(toka, tarina);
-        } else {
-            kolmannenPituus = laskeKappale(kolmas);
-            tarina = arvoKappale(kolmannenPituus);
-            monesko = 0;
+        } else if (monesko == 2) {
+            tarina = arvoKappale(laskeKappale(kolmas));
+            monesko++;
             return lueKappale(kolmas, tarina);
+        } else {
+            tarina = arvoKappale(laskeKappale(neljas));
+            return lueKappale(neljas,tarina);
         }
     }
 }

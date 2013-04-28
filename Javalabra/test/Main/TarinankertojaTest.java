@@ -1,11 +1,8 @@
 package Main;
 
-import Main.Tarinankertoja;
-import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.io.File;
-import java.util.Scanner;
 
 public class TarinankertojaTest {
 

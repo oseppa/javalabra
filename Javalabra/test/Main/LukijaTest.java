@@ -1,11 +1,8 @@
 package Main;
 
-import Main.Lukija;
-import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import java.io.File;
-import java.util.Scanner;
 
 public class LukijaTest {
 
@@ -36,14 +33,14 @@ public class LukijaTest {
     }
 
     @Test
-    public void laskeKappaleLaskeeTyhjanOikein(){
+    public void laskeKappaleLaskeeTyhjanOikein() {
         int a = testi.laskeKappale(kolmasTesti);
-        
+
         int vastaus = -1;
-        
+
         assertEquals(a, vastaus);
     }
-    
+
     @Test
     public void lueKappaleLukeeEkanOikein() {
         String a = testi.lueKappale(ekaTesti, 0);
@@ -57,10 +54,11 @@ public class LukijaTest {
 
         assertEquals(a, "Testi2-2");
     }
+
     @Test
-    public void lueKappaleLukeeTyhjanOikein(){
+    public void lueKappaleLukeeTyhjanOikein() {
         String a = testi.lueKappale(kolmasTesti, 0);
-        
+
         assertEquals(a, "Tiedosto Testi3.txt on tyhjä.");
     }
 }

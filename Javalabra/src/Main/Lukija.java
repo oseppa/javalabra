@@ -13,10 +13,26 @@ public class Lukija {
     private int lukumaara;
     private int kappale;
     private File tiedosto;
-    public static Scanner lukija;
-    public static File eka = new File("Eka.txt");
-    public static File toka = new File("Toka.txt");
-    public static File kolmas = new File("Kolmas.txt");
+    private Scanner lukija;
+    /**
+     * Ensimmäinen tekstitiedosto, jota ohjelma käsittelee
+     */
+    public File eka = new File("Eka.txt");
+    /**
+     * Toinen tekstitiedosto, jota ohjelma käsittelee
+     */
+    public File toka = new File("Toka.txt");
+    /**
+     * Kolmas tekstitiedosto, jota ohjelma käsittelee
+     */
+    public File kolmas = new File("Kolmas.txt");
+    /**
+     * Neljas tekstitiedosto, jota ohjelma käsittelee
+     */
+    public File neljas = new File("Neljas.txt");
+    /**
+     * Taulu, johon tekstitiedostot luetaan käsittelyä varten
+     */
     public String[] Taulu;
 
     /**
@@ -38,16 +54,16 @@ public class Lukija {
         try {
             lukija = new Scanner(tiedosto);
         } catch (FileNotFoundException e) {
-            System.out.println("Tiedostoa " +tiedosto +" ei löytynyt");
+            return "Tiedostoa " + tiedosto + " ei löytynyt.";
         }
         if (!lukija.hasNextLine()) {
             return "Tiedosto " + tiedosto + " on tyhjä.";
         }
         Taulu = lukija.nextLine().split(":");
-        String EkaKappale = Taulu[kappale];
-
+        String Kappale = Taulu[kappale];
         lukija.close();
-        return EkaKappale;
+
+        return Kappale;
     }
 
     /**
@@ -61,7 +77,7 @@ public class Lukija {
         try {
             lukija = new Scanner(tiedosto);
         } catch (FileNotFoundException e) {
-            System.out.println("Tiedostoa " +tiedosto +" ei löytynyt");
+            return -1;
         }
         if (!lukija.hasNextLine()) {
             return -1;
@@ -69,6 +85,7 @@ public class Lukija {
         Taulu = lukija.nextLine().split(":");
         lukumaara = Taulu.length;
         lukija.close();
+
         return lukumaara;
     }
 }

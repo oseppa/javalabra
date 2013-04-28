@@ -1,10 +1,8 @@
 package Main;
 
-import static Main.Lukija.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.Scanner;
 
 /**
  * Ohjelman käyttöliittymä
@@ -13,11 +11,22 @@ import java.util.Scanner;
  */
 public class GUI extends JFrame {
 
+    /**
+     * Logiikka, jota GUI toteuttaa
+     *
+     * @see Main.Tarinankertoja
+     */
     private Tarinankertoja kertoja;
     private JTextArea teksti;
     private JButton etene;
     private JButton nollaus;
+    /**
+     * Kenttä, jolla saadaan teksti-ikkunalle rulla tarvittaessa
+     */
     private JScrollPane rullaus;
+    /**
+     * Apumuuttuja, jolla saadaan nappulat toimimaan halutulla tavalla
+     */
     private int laskuri;
 
     /**
@@ -32,10 +41,11 @@ public class GUI extends JFrame {
         teksti = new JTextArea();
         teksti.setEditable(false);
         teksti.setLineWrap(true);
+        teksti.setWrapStyleWord(true);
 
         rullaus = new JScrollPane(teksti);
         rullaus.setPreferredSize(new Dimension(640, 320));
-        rullaus.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        rullaus.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
 
         etene = new JButton("Seuraava");
 
@@ -45,7 +55,7 @@ public class GUI extends JFrame {
                 if (laskuri == 0) {
                     teksti.setText(kertoja.kerroTarina());
                     laskuri++;
-                } else if (laskuri < 3) {
+                } else if (laskuri < 4) {
                     teksti.setText(teksti.getText() + "\n\n" + kertoja.kerroTarina());
                     laskuri++;
                 } else {
@@ -65,11 +75,12 @@ public class GUI extends JFrame {
         });
 
         JPanel nappulat = new JPanel(new GridLayout(2, 1));
-        nappulat.add(etene);
-        nappulat.add(nollaus);
+        nappulat.setPreferredSize(new Dimension(640, 320 / 3));
+        nappulat.add("North", etene);
+        nappulat.add("South", nollaus);
 
         this.setLayout(new BorderLayout());
-        this.add("North", rullaus);
+        this.add(rullaus);
         this.add("South", nappulat);
     }
 
